@@ -1,24 +1,31 @@
-// 'use strict';
+'use strict';
 
 const Browser = require('zombie');
 var assert = require('chai').assert;
 var app = require('../app/app');
-
+var server;
 // We're going to make requests to http://example.com/signup
 // Which will be routed to our test server localhost:3000
-Browser.localhost('example.com', 3000);
+Browser.localhost('example.com', 3001);
+
 
 describe('User visits signup page', function() {
 
   const browser = new Browser();
 
-  browser.visit('/path', function() {
-    console.log(browser.location.href);
-  });
-
-  before(function(done) {
+  before(function (done) {
+    server = app.listen(3001);
     browser.visit('/', done);
   });
+
+  after(function () {
+    server.close();
+  });
+
+  browser.visit('/', function() {
+    console.log(browser.location.href);
+  });
+  
 
   //
   // before(function(done) {

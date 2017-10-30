@@ -34,3 +34,23 @@ I would like to be able to book the room I want
 - Run `npm install`
 - Run `npm start`
 - visit `http://localhost:3000`
+
+Technologies
+-----
+
+### Main
+
+- Node.js
+- Express.js
+- mongoDB
+- mongoose
+- Javascript
+- JQuery
+- Html / CSS
+- Handlebars template engine
+
+### CI / Test
+
+- Mocha / Chai
+- Zombie.js
+- Travis CI
