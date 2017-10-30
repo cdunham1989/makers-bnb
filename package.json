@@ -1,10 +1,12 @@
 {
   "name": "makers-bnb",
   "version": "1.0.0",
+  "private": true,
   "description": "Testing for makers-bnb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app/bin/www"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,14 @@
   "homepage": "https://github.com/cdunham1989/makers-bnb#readme",
   "devDependencies": {
     "zombie": "^5.0.7"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "hbs": "~4.0.1",
+    "morgan": "~1.9.0",
+    "serve-favicon": "~2.4.5"
   }
 }
