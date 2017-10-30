@@ -5,7 +5,7 @@
   "description": "Testing for makers-bnb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node ./app/bin/www"
   },
   "repository": {
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/cdunham1989/makers-bnb#readme",
   "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
     "zombie": "^5.0.7"
   },
   "dependencies": {
