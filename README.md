@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cdunham1989/makers-bnb.svg?branch=master)](https://travis-ci.org/cdunham1989/makers-bnb)
+
 # MakersBnB
 
 Make an Airbnb clone.
