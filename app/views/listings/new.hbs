@@ -1,0 +1,29 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+<p> listing: {{listings}}</p>
+ <form method="post" action="/listings">
+   <ul>
+     <li><label for='listingName'>Enter your listing's name: </label>
+     <input id='listingName' type="text" name="listingName" placeholder="Name..." required></li>
+
+     <li><label for='listingLocation'>Location: </label>
+     <input id='listingLocation' type="text" name="listingLocation" placeholder="Location..." required></li>
+
+     <li><label for='listingPricePerNight'>Enter your price per night: </label>
+     <input id='listingPricePerNight' type="text" name="listingPricePerNight" placeholder="Price per night..." required></li>
+
+     <li><label for='listingNumberOfRooms'>Enter the number of rooms: </label>
+     <input id='listingNumberOfRooms' type="text" name="listingNumberOfRooms" placeholder="Number of rooms..." required></li>
+
+     <li><label for='listingDescription'>Enter a description: </label>
+     <input id='listingDescription' type="text" name="listingDescription" placeholder="Description...." required></li>
+     <li><div>
+       <label>Pet friendly? </label>
+       <label for='listingPetFriendlyTrue'>Yes</label>
+       <input id='listingPetFriendlyTrue' type="radio" name="listingPetFriendly" value='yes' required>
+       <label for='listingPetFriendlyFalse'>No</label>
+       <input id='listingPetFriendlyFalse' type="radio" name="listingPetFriendly" value='no' required>
+     </div></li>
+   </ul>
+   <input type="submit" value="Add Listing">
+ </form>

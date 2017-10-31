@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/new', (req, res) => {
-  res.render('index');
+  res.render('listings/new');
 });
 
 router.get("/", (req, res) => {
@@ -12,8 +12,7 @@ router.get("/", (req, res) => {
     .find()
     .select('listingName listingDescription')
     .exec(function (err, doc) {
-      res.render('index', { listings: doc });
-      console.log(doc);
+      res.render('listings/index', { listings: doc });
     });
 });
 
@@ -24,7 +23,7 @@ router.post("/", (req, res) => {
       res.redirect('/listings');
     })
     .catch(err => {
-      res.send('index');
+      res.send('listings/new');
     });
 });
 
