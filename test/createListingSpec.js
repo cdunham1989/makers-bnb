@@ -3,22 +3,19 @@
 const Browser = require('zombie');
 var expect = require('chai').expect;
 var app = require('../app/app');
+var http = require('http');
 
 Browser.localhost('makers-bnb.com', 3001);
-var server;
 
 describe('listings', function (){
 
   const browser = new Browser();
 
   before(function (done) {
-    server = app.listen(3001);
+    this.server = http.createServer(app).listen(3001);
     browser.visit('/listings/new', done);
   });
 
-  after(function () {
-    server.close();
-  });
 
   describe('creating a listing', function () {
 
@@ -37,6 +34,10 @@ describe('listings', function (){
       expect(browser.html('body')).to.contain("Bob sykes");
     });
 
+  });
+
+  after(function (done) {
+    this.server.close(done);
   });
 
 });

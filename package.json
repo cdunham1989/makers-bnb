@@ -5,7 +5,7 @@
   "description": "Testing for makers-bnb",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha",
+    "test": "NODE_ENV=test mocha --exit",
     "start": "node ./app/bin/www"
   },
   "repository": {

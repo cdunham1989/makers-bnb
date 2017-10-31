@@ -17,8 +17,8 @@ describe('User visits signup page', function() {
     browser.visit('/users/new', done);
   });
 
-  after(function() {
-    server.close();
+  after(function(done) {
+    server.close(done);
   });
 
   describe('Signing up form', function() {

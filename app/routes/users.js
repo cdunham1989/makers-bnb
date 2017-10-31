@@ -6,7 +6,7 @@ var User = mongoose.model('users');
 
 
 /* GET users listing. */
-router.get('users/new', function(req, res, next) {
+router.get('/new', function(req, res, next) {
   res.render('newUser');
 });
 
