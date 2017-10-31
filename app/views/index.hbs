@@ -1,15 +1,7 @@
-
-<p>Welcome to {{title}}</p>
-<!DOCTYPE html>
-<html>
- <head>
- <title>Makers B n B</title>
- </head>
-
- <body>
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
- <form method="post" action="/addlisting">
+<p> listing: {{listings}}</p>
+ <form method="post" action="/listings">
    <ul>
      <li><label for='listingName'>Enter your listing's name: </label>
      <input id='listingName' type="text" name="listingName" placeholder="Name..." required></li>
@@ -35,5 +27,3 @@
    </ul>
    <input type="submit" value="Add Listing">
  </form>
- </body>
-</html>
