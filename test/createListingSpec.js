@@ -3,8 +3,9 @@
 const Browser = require('zombie');
 var expect = require('chai').expect;
 var app = require('../app/app');
-var server;
+
 Browser.localhost('makers-bnb.com', 3001);
+var server;
 
 describe('listings', function (){
 
@@ -19,7 +20,7 @@ describe('listings', function (){
     server.close();
   });
 
-  describe('adding a listing', function () {
+  describe('creating a listing', function () {
 
     before(function (done) {
       browser
