@@ -58,11 +58,9 @@ mongoose
   .then(function() {
       console.log('connected to database ' + databaseURI);
     },
-    err => {
+    function(err) {
       console.log('unable to establish a connection');
     }
   );
-
-
 
 module.exports = app;
