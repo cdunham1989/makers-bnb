@@ -14,6 +14,7 @@ var app = express();
 
 var env = app.get('env');
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -22,7 +23,9 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -48,12 +51,17 @@ app.use(function(err, req, res, next) {
 });
 
 var databaseURI = 'mongodb://localhost/makers-bnb-' + env;
-var mongoose = mongoose
-  .connect(databaseURI, { useMongoClient: true })
-  .then(function () { console.log('connected to database ' + databaseURI) },
-  err => { return 'unable to establish a connection' }
-);
-
-var db = mongoose.connection;
+mongoose.Promise = global.Promise;
+mongoose
+  .connect(databaseURI, {
+    useMongoClient: true
+  })
+  .then(function() {
+      console.log('connected to database ' + databaseURI);
+    },
+    function(err) {
+      console.log('unable to establish a connection');
+    }
+  );
 
 module.exports = app;
