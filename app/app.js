@@ -4,11 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+var env = app.get('env');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,5 +45,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+var databaseURI = 'mongodb://localhost/makers-bnb-' + env;
+var mongoose = mongoose
+  .connect(databaseURI, { useMongoClient: true })
+  .then(function () { console.log('connected to database ' + databaseURI) },
+  err => { return 'unable to establish a connection' }
+);
+
+var db = mongoose.connection;
 
 module.exports = app;
