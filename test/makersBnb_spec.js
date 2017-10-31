@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 const Browser = require('zombie');
 var assert = require('chai').assert;
@@ -13,34 +13,25 @@ describe('User visits signup page', function() {
 
   const browser = new Browser();
 
-  before(function (done) {
+  before(function(done) {
     server = app.listen(3001);
     browser.visit('/', done);
+
   });
 
-  after(function () {
+  after(function() {
     server.close();
   });
 
   browser.visit('/', function() {
     console.log(browser.location.href);
   });
-  
-
-  //
-  // before(function(done) {
-  //   browser
-  //     .fill('email', 'zombie@underworld.dead')
-  //     .fill('password', 'eat-the-living')
-  //     .pressButton('Sign Me Up!', done);
-  // });
 
   it('should be successful', function() {
-    // browser.assert.success();
+    browser.assert.success();
   });
 
   it('should see welcome page', function() {
     console.log('hello peeps');
-    // browser.assert.text('title', 'Welcome To Brains Depot');
   });
 });
