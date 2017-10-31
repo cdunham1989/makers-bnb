@@ -54,3 +54,11 @@ Technologies
 - Mocha / Chai
 - Zombie.js
 - Travis CI
+
+Contributors
+-----
+
+Chris Dunham
+Hugo Sykes
+Christine Horrocks
+Ainsley Chang
