@@ -8,30 +8,30 @@ var http = require('http');
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('listings', function (){
+describe('listings test', function (){
 
   const browser = new Browser();
+  const Listing = mongoose.model("listings");
 
   before(function (done) {
     this.server = http.createServer(app).listen(3001);
-    browser.visit('/listings/new', done);
+    var newListing = new Listing({
+      listingName: 'Bob sykes',
+      listingLocation: 'London',
+      listingPricePerNight: '300',
+      listingNumberOfRooms: '4',
+      listingDescription: 'Nice'});
+    newListing.save(done);
   });
 
 
-  describe('creating a listing', function () {
+  describe('viewing a listing', function () {
 
     before(function (done) {
-      browser
-        .fill('listingName', "Bob sykes")
-        .fill('listingLocation', "London")
-        .fill('listingPricePerNight', "300")
-        .fill('listingNumberOfRooms', "4")
-        .fill('listingDescription', "Nice")
-        .choose('no')
-        .pressButton('Add Listing', done)
+      browser.visit('/listings', done);
     });
     
-    it('allows a user to create a listing', function () {
+    it('allows a user to view all listings', function () {
       expect(browser.html('body')).to.contain("Bob sykes");
     });
 
@@ -39,7 +39,7 @@ describe('listings', function (){
 
   after(function (done) {
     this.server.close();
-    mongoose.connection.db.dropDatabase(done);    
+    mongoose.connection.db.dropDatabase(done);
   });
 
 });
