@@ -5,13 +5,15 @@ var SALT_WORK_FACTOR = 10;
 var userSchema = new mongoose.Schema({
   username: String,
   email: String,
-  password: String
+  password: String,
+  passwordConfirmation: String
 });
 
 userSchema.pre('save', function(next) {
+  if (this.password !== this.passwordConfirmation) return next(new Error("Passwords don't match!"));
+  this.passwordConfirmation = null;
   var user = this;
-  if(!user.isModified('password')) return next();
-  bcrypt.genSalt(SALT_WORK_FACTOR, function(err,salt) {
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) return next(err);
     bcrypt.hash(user.password, salt, function(err, hash) {
       if (err) return next(err);
@@ -23,8 +25,8 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-      if (err) return cb(err);
-      cb(null, isMatch);
+    if (err) return cb(err);
+    cb(null, isMatch);
   });
 };
 

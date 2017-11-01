@@ -12,27 +12,37 @@ Browser.localhost('makers-bnb.com', 3001);
 describe('bcrypt', function() {
 
   const browser = new Browser();
+  var userCount = 0;
 
   before(function(done) {
     this.server = http.createServer(app).listen(3001);
     browser.visit('/users/new', done);
   });
 
-  describe('test matching passwords', function() {
-    before(function(done) {
-      browser
-        .fill('username', 'ChristopherRobin2')
-        .fill('email', 'chris@hacc.com')
-        .fill('password', 'hello123')
-        .fill('passwordConfirmation', 'hello12')
-        .pressButton('Sign Me Up!', done);
+  before(function(done) {
+    browser
+      .fill('username', 'ChristopherRobin2')
+      .fill('email', 'chris@hacc.com')
+      .fill('password', 'hello123')
+      .fill('passwordConfirmation', 'hello')
+      .pressButton('Sign Me Up!', done);
 
+
+  });
+
+  before(function(done) {
+    User.count({}, function(err, count) {
+      userCount = count;
+      console.log("Number of docs: ", count);
+      console.log(userCount + 'userCount');
     });
+    done();
+  });
 
+  describe('test matching passwords', function() {
     it('should only create a user if passwords match', function() {
-      User.findOne({username: 'ChristopherRobin2'}, function(err, doc) {
-        console.log(doc.username);
-      })
+      console.log('im testing userCount');
+      expect(userCount).to.equal(0);
     });
 
     it('should see welcome page', function() {
@@ -40,7 +50,7 @@ describe('bcrypt', function() {
     });
   });
 
-  after(function (done) {
+  after(function(done) {
     this.server.close();
     mongoose.connection.db.dropDatabase(done);
   });
