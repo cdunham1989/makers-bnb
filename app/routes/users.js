@@ -1,22 +1,23 @@
-var express = require('express');
-var router = express.Router();
-var user = require('../models/user');
 var mongoose = require('mongoose');
 var User = mongoose.model('users');
+var express = require('express');
+var router = express.Router();
 
-
-/* GET users listing. */
-router.get('/new', function(req, res, next) {
+router.get('/new', function(req, res) {
   res.render('newUser');
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
   var newUser = new User(req.body);
-  newUser.save();
-  res.redirect('/users/confirmation');
+  newUser.save().then(item => {
+    res.redirect('/users/confirmation');
+  })
+  .catch(err => {
+    res.send('users/new');
+  });
 });
 
-router.get('/confirmation', function(req, res, next) {
+router.get('/confirmation', function (req, res) {
   // User.findOne({}, {}, function(e, r) {
   //   console.log(r.username);
   //   res.render('confirmation', {

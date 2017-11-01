@@ -3,6 +3,7 @@
 const Browser = require('zombie');
 var expect = require('chai').expect;
 var app = require('../app/app');
+var mongoose = require('mongoose');
 var http = require('http');
 
 Browser.localhost('makers-bnb.com', 3001);
@@ -37,6 +38,7 @@ describe('listings', function (){
   });
 
   after(function (done) {
+    // mongoose.connection.db.dropDatabase();
     this.server.close(done);
   });
 
