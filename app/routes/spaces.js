@@ -1,28 +1,28 @@
 const mongoose = require('mongoose');
-const Listing = mongoose.model("listings");
+const Space = mongoose.model("spaces");
 var express = require('express');
 var router = express.Router();
 
 router.get('/new', (req, res) => {
-  res.render('listings/new');
+  res.render('spaces/new');
 });
 
 router.get("/", (req, res) => {
-  Listing
+  Space
     .find()
     .exec(function (err, doc) {
-      res.render('listings/index', { listings: doc });
+      res.render('spaces/index', { spaces: doc });
     });
 });
 
 router.post("/", (req, res) => {
-  var newListing = new Listing(req.body);
-  newListing.save()
+  var newSpace = new Space(req.body);
+  newSpace.save()
     .then(item => {
-      res.redirect('/listings');
+      res.redirect('/spaces');
     })
     .catch(err => {
-      res.send('listings/new');
+      res.send('spaces/new');
     });
 });
 

@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+ <form method="post" action="/spaces">
+   <ul>
+     <li><label for='spaceName'>Enter your space's name: </label>
+     <input id='spaceName' type="text" name="spaceName" placeholder="Name..." required></li>
+
+     <li><label for='spaceLocation'>Location: </label>
+     <input id='spaceLocation' type="text" name="spaceLocation" placeholder="Location..." required></li>
+
+     <li><label for='spacePricePerNight'>Enter your price per night: </label>
+     <input id='spacePricePerNight' type="text" name="spacePricePerNight" placeholder="Price per night..." required></li>
+
+     <li><label for='spaceNumberOfRooms'>Enter the number of rooms: </label>
+     <input id='spaceNumberOfRooms' type="text" name="spaceNumberOfRooms" placeholder="Number of rooms..." required></li>
+
+     <li><label for='spaceDescription'>Enter a description: </label>
+     <input id='spaceDescription' type="text" name="spaceDescription" placeholder="Description...." required></li>
+     <li><div>
+       <label>Pet friendly? </label>
+       <label for='spacePetFriendlyTrue'>Yes</label>
+       <input id='spacePetFriendlyTrue' type="radio" name="spacePetFriendly" value='yes' required>
+       <label for='spacePetFriendlyFalse'>No</label>
+       <input id='spacePetFriendlyFalse' type="radio" name="spacePetFriendly" value='no' required>
+     </div></li>
+   </ul>
+   <input type="submit" value="List Space">
+ </form>

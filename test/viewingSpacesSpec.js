@@ -8,30 +8,30 @@ var http = require('http');
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('listings test', function (){
+describe('Spaces', function (){
 
   const browser = new Browser();
-  const Listing = mongoose.model("listings");
+  const Listing = mongoose.model("spaces");
 
   before(function (done) {
     this.server = http.createServer(app).listen(3001);
-    var newListing = new Listing({
-      listingName: 'Bob sykes',
-      listingLocation: 'London',
-      listingPricePerNight: '300',
-      listingNumberOfRooms: '4',
-      listingDescription: 'Nice'});
-    newListing.save(done);
+    var newSpace = new Listing({
+      spaceName: 'Bob sykes',
+      spaceLocation: 'London',
+      spacePricePerNight: '300',
+      spaceNumberOfRooms: '4',
+      spaceDescription: 'Nice'});
+    newSpace.save(done);
   });
 
 
-  describe('viewing a listing', function () {
+  describe('viewing a space', function () {
 
     before(function (done) {
-      browser.visit('/listings', done);
+      browser.visit('/spaces', done);
     });
     
-    it('allows a user to view all listings', function () {
+    it('allows a user to view all spaces', function () {
       expect(browser.html('body')).to.contain("Bob sykes");
     });
 
