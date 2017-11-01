@@ -10,7 +10,6 @@ router.get('/new', (req, res) => {
 router.get("/", (req, res) => {
   Listing
     .find()
-    .select('listingName listingDescription')
     .exec(function (err, doc) {
       res.render('listings/index', { listings: doc });
     });

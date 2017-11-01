@@ -1,3 +1,14 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
-<p> listings: {{listings}}</p>
+<section>
+  {{#each listings}}
+  <article>
+    <p>{{ this.listingName }}</p>
+    <p>{{ this.listingLocation }}</p>
+    <p>{{ this.listingPricePerNight }}</p>
+    <p>{{ this.listingNumberOfRooms }}</p>
+    <p>{{ this.listingDescription }}</p>
+    <p>{{ this.listingPetFriendly }}</p>
+  </article>
+  {{/each}}
+</section>
