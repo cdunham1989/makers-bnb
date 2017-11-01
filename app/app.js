@@ -67,7 +67,7 @@ mongoose
       console.log('unable to establish a connection');
     }
 );
-  
+
 process.on('SIGINT', function() {
   mongoose.disconnect(function () {
     console.log('disconnected from database on app termination');
