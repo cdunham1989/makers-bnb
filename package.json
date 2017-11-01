@@ -5,8 +5,9 @@
   "description": "Testing for makers-bnb",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --exit",
-    "start": "node ./app/bin/www"
+    "test": "NODE_ENV=test nyc mocha --exit",
+    "start": "node ./app/bin/www",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,10 @@
   "homepage": "https://github.com/cdunham1989/makers-bnb#readme",
   "devDependencies": {
     "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
     "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
+    "sinon": "^4.0.2",
     "zombie": "^5.0.7"
   },
   "dependencies": {
