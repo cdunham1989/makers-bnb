@@ -26,16 +26,11 @@ router.post("/", (req, res) => {
     });
 });
 
-router.get('book/:spaceId', (req, res) => {
-  // res.render('spaces/book');
-  // var query = req.query
-  // var params = req.params
-  // console.log(req.params)
-  // console.log(req.query)
-  // var data = req.params.spaceId;
-  // console.log(data)
-  // res.send("hi"+ data + query + params);
-    res.send("hi");
+router.get('/book', (req, res) => {
+  Space.findOne({ _id: req.query.spaceId })
+    .exec(function (err, doc) {
+      res.render('spaces/book', { space: doc });
+  });
 });
 
 // router.get("/book", (req, res) => {

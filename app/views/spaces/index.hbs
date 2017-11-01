@@ -9,8 +9,8 @@
     <p>{{ this.spaceNumberOfRooms }}</p>
     <p>{{ this.spaceDescription }}</p>
     <p>{{ this.spacePetFriendly }}</p>
-    <form method="get" action="/spaces/book/:{{this.id}}">
-      <button type="submit">Book Me</button>
+    <form action="/spaces/book">
+      <button type="submit" name="spaceId" value="{{this.id}}">Book Me</button>
     </form>
   </article>
   {{/each}}

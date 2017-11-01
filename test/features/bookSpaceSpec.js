@@ -1,11 +1,5 @@
 'use strict';
 
-const Browser = require('zombie');
-var expect = require('chai').expect;
-var app = require('../app/app');
-var mongoose = require('mongoose');
-var http = require('http');
-
 Browser.localhost('makers-bnb.com', 3001);
 
 describe('booking test', function (){
@@ -24,11 +18,14 @@ describe('booking test', function (){
     newSpace.save(done);
   });
 
+  before(function (done) {
+    browser.visit('/spaces', done);
+  });
+
 
   describe('booking a space', function () {
 
     before(function (done) {
-      browser.visit('/spaces');
       browser.pressButton('Book Me', done)
     });
 
