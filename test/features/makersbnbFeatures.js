@@ -1,11 +1,5 @@
 'use strict';
 
-const Browser = require('zombie');
-var expect = require('chai').expect;
-var app = require('../app/app');
-var mongoose = require('mongoose');
-var http = require('http');
-
 Browser.localhost('example.com', 3001);
 
 describe('User visits signup page', function() {
