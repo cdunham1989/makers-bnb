@@ -1,10 +1,4 @@
 'use strict';
-
-const Browser = require('zombie');
-var expect = require('chai').expect;
-var app = require('../app/app');
-var mongoose = require('mongoose');
-var http = require('http');
 var User = mongoose.model('users');
 
 Browser.localhost('makers-bnb.com', 3001);

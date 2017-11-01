@@ -23,11 +23,9 @@ userSchema.pre('save', function(next) {
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) return next(err);
     user.salt = salt;
-    console.log(user.salt);
     bcrypt.hash(user.password, salt, function(err, hash) {
       if (err) return next(err);
       user.password = hash;
-      console.log(user.password);
       next();
     });
   });
