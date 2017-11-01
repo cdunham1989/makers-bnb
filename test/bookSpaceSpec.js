@@ -8,14 +8,14 @@ var http = require('http');
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('Spaces', function (){
+describe('booking test', function (){
 
   const browser = new Browser();
-  const Listing = mongoose.model("spaces");
+  const Space = mongoose.model("spaces");
 
   before(function (done) {
     this.server = http.createServer(app).listen(3001);
-    var newSpace = new Listing({
+    var newSpace = new Space({
       spaceName: 'Bob sykes',
       spaceLocation: 'London',
       spacePricePerNight: '300',
@@ -25,13 +25,14 @@ describe('Spaces', function (){
   });
 
 
-  describe('viewing a space', function () {
+  describe('booking a space', function () {
 
     before(function (done) {
-      browser.visit('/spaces', done);
+      browser.visit('/spaces');
+      browser.pressButton('Book Me', done)
     });
 
-    it('allows a user to view all spaces', function () {
+    it('allows a user to book a space', function () {
       expect(browser.html('body')).to.contain("Bob sykes");
     });
 

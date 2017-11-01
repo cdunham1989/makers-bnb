@@ -14,6 +14,7 @@ const user = require('./models/user');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var spaces = require('./routes/spaces');
+// var book = require('./routes/book');
 
 var env = app.get('env');
 
@@ -67,7 +68,7 @@ mongoose
       console.log('unable to establish a connection');
     }
 );
-  
+
 process.on('SIGINT', function() {
   mongoose.disconnect(function () {
     console.log('disconnected from database on app termination');

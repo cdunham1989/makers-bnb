@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<p>Welcome to {{this.spaceName}}</p>
 <section>
-  {{#each spaces}}
+    {{spaces}}
   <article>
     <p>{{ this.spaceName }}</p>
     <p>{{ this.spaceLocation }}</p>
@@ -9,9 +9,5 @@
     <p>{{ this.spaceNumberOfRooms }}</p>
     <p>{{ this.spaceDescription }}</p>
     <p>{{ this.spacePetFriendly }}</p>
-    <form method="get" action="/spaces/book/:{{this.id}}">
-      <button type="submit">Book Me</button>
-    </form>
   </article>
-  {{/each}}
 </section>
