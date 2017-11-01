@@ -34,8 +34,8 @@ describe('User visits signup page', function() {
   });
 
   after(function (done) {
-    mongoose.connection.db.dropDatabase();    
-    this.server.close(done);
+    this.server.close();
+    mongoose.connection.db.dropDatabase(done);    
   });
 
 });
