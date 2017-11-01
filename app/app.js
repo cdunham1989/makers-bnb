@@ -6,13 +6,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var users = require('./routes/listings');
-
 var app = express();
 
+const listing = require('./models/listing');
+const user = require('./models/user');
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+var listings = require('./routes/listings');
+
 var env = app.get('env');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,12 +26,15 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/listings', listings);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,12 +55,24 @@ app.use(function(err, req, res, next) {
 });
 
 var databaseURI = 'mongodb://localhost/makers-bnb-' + env;
-var mongoose = mongoose
-  .connect(databaseURI, { useMongoClient: true })
-  .then(function () { console.log('connected to database ' + databaseURI) },
-  err => { return 'unable to establish a connection' }
+mongoose.Promise = global.Promise;
+mongoose
+  .connect(databaseURI, {
+    useMongoClient: true
+  })
+  .then(function() {
+      console.log('connected to database ' + databaseURI);
+    },
+    function(err) {
+      console.log('unable to establish a connection');
+    }
 );
-
-var db = mongoose.connection;
+  
+process.on('SIGINT', function() {
+  mongoose.disconnect(function () {
+    console.log('disconnected from database on app termination');
+    process.exit(0);
+  });
+});
 
 module.exports = app;

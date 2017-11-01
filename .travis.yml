@@ -1,7 +1,13 @@
 language: node_js
+
 node_js:
   # - "iojs"
   - "8"
+  
 branches:
   only:
     - master
+
+services: mongodb
+
+after_success: npm run coverage

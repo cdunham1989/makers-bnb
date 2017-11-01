@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/cdunham1989/makers-bnb.svg?branch=master)](https://travis-ci.org/cdunham1989/makers-bnb)
+[![Coverage Status](https://coveralls.io/repos/github/cdunham1989/makers-bnb/badge.svg)](https://coveralls.io/github/cdunham1989/makers-bnb)
 
 # MakersBnB
 
@@ -40,27 +41,30 @@ I would like to be able to book the room I want
 Technologies
 -----
 
+### Languages
+
+- Javascript
+- JQuery
+- Html / CSS
+
 ### Main
 
 - Node.js
 - Express.js
-- mongoDB
-- mongoose
-- Javascript
-- JQuery
-- Html / CSS
-- Handlebars template engine
+- mongoDB / mongoose
+- Handlebars
 
 ### CI / Test
 
-- Mocha / Chai
+- Mocha / Chai / Sinon
 - Zombie.js
 - Travis CI
+- Istanbul & Coveralls
 
 Contributors
 -----
 
-Chris Dunham
-Hugo Sykes
-Christine Horrocks
-Ainsley Chang
+Chris Dunham   
+Hugo Sykes   
+Christine Horrocks   
+Ainsley Chang   
