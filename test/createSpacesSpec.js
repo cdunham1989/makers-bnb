@@ -8,30 +8,30 @@ var http = require('http');
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('listings', function (){
+describe('Spaces', function (){
 
   const browser = new Browser();
 
   before(function (done) {
     this.server = http.createServer(app).listen(3001);
-    browser.visit('/listings/new', done);
+    browser.visit('/spaces/new', done);
   });
 
 
-  describe('creating a listing', function () {
+  describe('creating a space', function () {
 
     before(function (done) {
       browser
-        .fill('listingName', "Bob sykes")
-        .fill('listingLocation', "London")
-        .fill('listingPricePerNight', "300")
-        .fill('listingNumberOfRooms', "4")
-        .fill('listingDescription', "Nice")
+        .fill('spaceName', "Bob sykes")
+        .fill('spaceLocation', "London")
+        .fill('spacePricePerNight', "300")
+        .fill('spaceNumberOfRooms', "4")
+        .fill('spaceDescription', "Nice")
         .choose('no')
-        .pressButton('Add Listing', done)
+        .pressButton('List Space', done)
     });
     
-    it('allows a user to create a listing', function () {
+    it('allows a user to create a space', function () {
       expect(browser.html('body')).to.contain("Bob sykes");
     });
 
