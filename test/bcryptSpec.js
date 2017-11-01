@@ -21,28 +21,18 @@ describe('bcrypt', function() {
 
   before(function(done) {
     browser
-      .fill('username', 'ChristopherRobin2')
+      .fill('username', 'Chris')
       .fill('email', 'chris@hacc.com')
       .fill('password', 'hello123')
       .fill('passwordConfirmation', 'hello')
       .pressButton('Sign Me Up!', done);
-
-
-  });
-
-  before(function(done) {
-    User.count({}, function(err, count) {
-      userCount = count;
-      console.log("Number of docs: ", count);
-      console.log(userCount + 'userCount');
-    });
-    done();
   });
 
   describe('test matching passwords', function() {
     it('should only create a user if passwords match', function() {
-      console.log('im testing userCount');
-      expect(userCount).to.equal(0);
+      User.count({}, function(err, count) {
+        expect(count).to.equal(0);
+      });
     });
 
     it('should see welcome page', function() {
