@@ -64,7 +64,7 @@ Technologies
 Contributors
 -----
 
-Chris Dunham
-Hugo Sykes
-Christine Horrocks
-Ainsley Chang
+Chris Dunham   
+Hugo Sykes   
+Christine Horrocks   
+Ainsley Chang   
