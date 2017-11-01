@@ -10,21 +10,14 @@ router.get('/new', function(req, res) {
 router.post('/', function(req, res) {
   var newUser = new User(req.body);
   newUser.save().then(item => {
-    res.redirect('/users/confirmation');
-  })
-  .catch(err => {
-    res.send('users/new');
-  });
+      res.redirect('/users/confirmation');
+    })
+    .catch(err => {
+      res.redirect('users/new');
+    });
 });
 
-router.get('/confirmation', function (req, res) {
-  // User.findOne({}, {}, function(e, r) {
-  //   console.log(r.username);
-  //   res.render('confirmation', {
-  //     username: r.username
-  //   });
-  // });
-
+router.get('/confirmation', function(req, res) {
   User.findOne().sort({
     $natural: -1
   }).exec(function(e, r) {
