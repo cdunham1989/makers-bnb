@@ -58,7 +58,7 @@ describe('booking test', function (){
   describe('viewing a space booking', function () {
 
     it('requests a booking', function () {
-      expect(browser.html('body')).to.contain('You have requested to book Bob sykes');
+      expect(browser.html('body')).to.contain('Bob sykes');
     });
 
   });

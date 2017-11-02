@@ -5,23 +5,27 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session = require('express-session');
 
 var app = express();
+var env = app.get('env');
 
+//bootstrap models & routes
 const space = require('./models/space');
 const user = require('./models/user');
 const booking = require('./models/booking');
-var User = mongoose.model('users');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var spaces = require('./routes/spaces');
 var bookings = require('./routes/bookings');
 
-var session = require('express-session');
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
-var env = app.get('env');
-
+//session data
+var sessionTools = require('./bin/sessionTools');
 app.use(session({
   cookieName: 'session',
   duration: 30 * 60 * 1000,
@@ -31,26 +35,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false }
 }));
-
-app.use(function(req, res, next) {
-  if (req.session && req.session.user) {
-    User.findOne({ email: req.session.user.email }, function(err, user) {
-      if (user) {
-        req.user = user;
-        delete req.user.password;
-        req.session.user = user;
-        res.locals.user = user;
-      }
-      next();
-    });
-  } else {
-    next();
-  }
-});
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.use(sessionTools.setSession);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
