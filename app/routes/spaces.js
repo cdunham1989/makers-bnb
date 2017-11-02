@@ -19,6 +19,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   var newSpace = new Space(req.body);
+  newSpace.owner = req.user.id
   newSpace.save()
     .then(item => {
       res.redirect('/users/' + req.user.username + '/spaces');

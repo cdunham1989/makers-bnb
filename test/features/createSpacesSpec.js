@@ -8,9 +8,32 @@ describe('Spaces', function() {
 
   before(function(done) {
     this.server = http.createServer(app).listen(3001);
-    browser.visit('/spaces/new', done);
+    browser.visit('/users/new', done);
   });
 
+  before(function(done) {
+    browser
+      .fill('username', 'Chris')
+      .fill('email', 'chris@hacc.com')
+      .fill('password', 'hello123')
+      .fill('passwordConfirmation', 'hello123')
+      .pressButton('Sign Me Up!', done);
+  });
+
+  before(function (done) {
+    browser.visit('/login', done);
+  });
+
+  before(function(done) {
+    browser
+      .fill('username', 'Chris')
+      .fill('password', 'hello123')
+      .pressButton('Login', done);
+  });
+
+  before(function(done) {
+    browser.visit('/spaces/new', done);
+  });
 
   describe('creating a space', function() {
 

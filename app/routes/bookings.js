@@ -15,7 +15,7 @@ router.get('/new', sessionTools.requireLogin, (req, res) => {
 router.post("/", (req, res) => {
   newBooking = new Booking({
     bookingSpace: req.body.spaceId,
-    bookingUserId: req.user
+    bookingUser: req.user.id
   })
   newBooking
     .save()
