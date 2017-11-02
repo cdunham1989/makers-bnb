@@ -7,8 +7,6 @@ describe('Spaces', function (){
   const browser = new Browser();
   const Listing = mongoose.model("spaces");
 
-  
-
   before(function (done) {
     this.server = http.createServer(app).listen(3001);
     browser.visit('/users/new', done);    
@@ -24,7 +22,7 @@ describe('Spaces', function (){
   });
 
   before(function (done) {
-    browser.visit('/login', done);
+    browser.visit('/sessions/new', done);
   });
 
   before(function(done) {

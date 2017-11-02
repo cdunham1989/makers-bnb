@@ -2,7 +2,7 @@
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('bcrypt', function() {
+describe('Sign Up', function() {
 
   const browser = new Browser();
   var userCount = 0;
@@ -21,16 +21,14 @@ describe('bcrypt', function() {
       .pressButton('Sign Me Up!', done);
   });
 
-  describe('test matching passwords', function() {
+  describe('test matching passwords', function () {
+    
     it('should only create a user if passwords match', function() {
       User.count({}, function(err, count) {
         expect(count).to.equal(0);
       });
     });
 
-    it('should see welcome page', function() {
-      expect(3).to.equal(3);
-    });
   });
 
   after(function(done) {

@@ -7,17 +7,17 @@ var router = express.Router();
 var sessionTools = require('../bin/sessionTools');
 
 router.get('/new', function(req, res) {
-  res.render('newUser');
+  res.render('users/new');
 });
 
 router.post('/', function(req, res) {
   var newUser = new User(req.body);
   newUser.save().then(function (item) {
     req.session.user = newUser
-    res.redirect('/users/' + newUser.username + '/spaces');
+    res.redirect('/users/' + newUser.username);
     })
     .catch(function(err) {
-      res.redirect('users/new');
+      res.redirect('/users/new');
     });
 });
 
@@ -27,7 +27,7 @@ router.delete('/', function (req, res) {
   });
 });
 
-router.get('/:username/spaces', sessionTools.requireLogin, function (req, res) {
+router.get('/:username', sessionTools.requireLogin, function (req, res) {
   Space
     .find({ owner: req.user.id })
     .exec(function (err, spaces) {
@@ -35,7 +35,7 @@ router.get('/:username/spaces', sessionTools.requireLogin, function (req, res) {
         .find({ bookingUser: req.user.id })
         .populate('bookingSpace')
         .exec(function (err, bookings) {
-          res.render('users/spaces', {
+          res.render('users/index', {
             user: req.user,
             spaces: spaces,
             bookings: bookings

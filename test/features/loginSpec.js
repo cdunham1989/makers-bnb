@@ -21,7 +21,7 @@ describe('Log in', function() {
   });
 
   before(function(done) {
-    browser.visit('/login', done);
+    browser.visit('/sessions/new', done);
   });
 
   before(function(done) {
@@ -34,7 +34,7 @@ describe('Log in', function() {
   describe("User should be able to log in", function () {
     
     it('expects to be able to able to log in', function() {
-      expect(browser.url).to.equal('http://makers-bnb.com/users/Hugo/spaces');
+      expect(browser.url).to.equal('http://makers-bnb.com/users/Hugo');
     });
   
   });

@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
         .find()
         .populate('bookingSpace')
         .exec(function (err, doc) {
-          res.redirect('/users/' + req.user.username + '/spaces');
+          res.redirect('/users/' + req.user.username);
         })
     })
     .catch(err => {

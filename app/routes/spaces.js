@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
   newSpace.owner = req.user.id
   newSpace.save()
     .then(item => {
-      res.redirect('/users/' + req.user.username + '/spaces');
+      res.redirect('/users/' + req.user.username);
     })
     .catch(err => {
       res.send('spaces/new');

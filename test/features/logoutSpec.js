@@ -21,7 +21,7 @@ describe('Logout', function() {
   });
 
   before(function(done) {
-    browser.visit('/login', done);
+    browser.visit('/sessions/new', done);
   });
  
   before(function (done) {

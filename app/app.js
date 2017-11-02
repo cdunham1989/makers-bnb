@@ -19,6 +19,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var spaces = require('./routes/spaces');
 var bookings = require('./routes/bookings');
+var sessions = require('./routes/sessions');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,6 +53,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/spaces', spaces);
 app.use('/bookings', bookings);
+app.use('/sessions', sessions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

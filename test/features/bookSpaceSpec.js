@@ -2,7 +2,7 @@
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('booking test', function (){
+describe('bookings', function (){
 
   const browser = new Browser();
   const Space = mongoose.model("spaces");
@@ -33,7 +33,7 @@ describe('booking test', function (){
   });
 
   before(function (done) {
-    browser.visit('/login', done);
+    browser.visit('/sessions/new', done);
   });
 
   before(function(done) {
