@@ -13,11 +13,14 @@ router.post('/', function(req, res) {
       res.redirect('/users/confirmation');
     })
     .catch(err => {
+
       res.redirect('users/new');
+
     });
 });
 
 router.get('/confirmation', function(req, res) {
+
   User.findOne().sort({
     $natural: -1
   }).exec(function(e, r) {
