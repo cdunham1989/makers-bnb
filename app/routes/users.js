@@ -13,7 +13,9 @@ router.post('/', function(req, res) {
       res.redirect('/users/confirmation');
     })
     .catch(err => {
-      res.send('users/new');
+
+      res.redirect('users/new');
+
     });
 });
 

@@ -1,11 +1,5 @@
 'use strict';
 
-const Browser = require('zombie');
-var expect = require('chai').expect;
-var app = require('../app/app');
-var mongoose = require('mongoose');
-var http = require('http');
-
 Browser.localhost('makers-bnb.com', 3001);
 
 describe('Spaces', function (){
@@ -30,7 +24,7 @@ describe('Spaces', function (){
     before(function (done) {
       browser.visit('/spaces', done);
     });
-    
+
     it('allows a user to view all spaces', function () {
       expect(browser.html('body')).to.contain("Bob sykes");
     });
