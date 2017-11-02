@@ -4,7 +4,15 @@ const Booking = mongoose.model("bookings");
 var express = require('express');
 var router = express.Router();
 
-router.get('/new', (req, res) => {
+function requireLogin (req, res, next) {
+  if (!req.user) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+};
+
+router.get('/new', requireLogin, (req, res) => {
   Space.findOne({ _id: req.query.spaceId })
     .exec(function (err, doc) {
       res.render('bookings/new', { space: doc });

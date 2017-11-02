@@ -14,6 +14,9 @@ var userSchema = new mongoose.Schema({
   password: String,
   passwordConfirmation: String,
   salt: String
+},
+{
+  timestamps: true
 });
 
 userSchema.pre('save', function(next) {
@@ -31,10 +34,11 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+userSchema.methods.comparePassword = function (candidatePassword, cb) {
+  var user = this;
+  bcrypt.compare(candidatePassword, user.password, function(err, isMatch) {
     if (err) return cb(err);
-    return isMatch;
+    cb(null, isMatch);
   });
 };
 

@@ -11,24 +11,42 @@ var app = express();
 const space = require('./models/space');
 const user = require('./models/user');
 const booking = require('./models/booking');
+var User = mongoose.model('users');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var spaces = require('./routes/spaces');
 var bookings = require('./routes/bookings');
 
-var passport = require('passport');
 var session = require('express-session');
 
 var env = app.get('env');
 
 app.use(session({
+  cookieName: 'session',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
   secret: 'mySecretKey',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: { secure: false }
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+
+app.use(function(req, res, next) {
+  if (req.session && req.session.user) {
+    User.findOne({ email: req.session.user.email }, function(err, user) {
+      if (user) {
+        req.user = user;
+        delete req.user.password;
+        req.session.user = user;
+        res.locals.user = user;
+      }
+      next();
+    });
+  } else {
+    next();
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
