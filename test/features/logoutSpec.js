@@ -2,7 +2,7 @@
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('Log in', function() {
+describe('Logout', function() {
 
   const browser = new Browser();
 
@@ -23,18 +23,22 @@ describe('Log in', function() {
   before(function(done) {
     browser.visit('/login', done);
   });
-
-  before(function(done) {
+ 
+  before(function (done) {
     browser
       .fill('username', 'Hugo')
       .fill('password', 'hello123')
       .pressButton('Login', done);
   });
 
-  describe("User should be able to log in", function () {
-    
-    it('expects to be able to able to log in', function() {
-      expect(browser.url).to.equal('http://makers-bnb.com/users/Hugo/spaces');
+  describe("logging out", function() {
+
+    before(function (done) {
+      browser.pressButton('Log Out', done);
+    });
+
+    it('redirects to the home page', function() {
+      expect(browser.url).to.equal('http://makers-bnb.com/');
     });
   
   });

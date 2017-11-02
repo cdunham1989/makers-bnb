@@ -21,6 +21,12 @@ router.post('/', function(req, res) {
     });
 });
 
+router.delete('/', function (req, res) {
+  req.session.destroy(function (err) {
+    res.redirect('/');
+  });
+});
+
 router.get('/:username/spaces', sessionTools.requireLogin, function (req, res) {
   Space
     .find({ owner: req.user.id })
