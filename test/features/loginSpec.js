@@ -33,5 +33,12 @@ describe('Log in', function() {
     it('expects to be able to able to log in', function() {
       expect(browser.url).to.equal('http://makers-bnb.com/home');
     });
+  
   });
+
+  after(function(done) {
+    this.server.close();
+    mongoose.connection.db.dropDatabase(done);
+  });
+
 });

@@ -37,4 +37,5 @@ describe('bcrypt', function() {
     this.server.close();
     mongoose.connection.db.dropDatabase(done);
   });
+  
 });
