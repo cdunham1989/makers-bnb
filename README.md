@@ -53,6 +53,7 @@ Technologies
 - Express.js
 - mongoDB / mongoose
 - Handlebars
+- Bootstrap
 
 ### CI / Test
 
