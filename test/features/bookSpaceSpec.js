@@ -7,6 +7,7 @@ describe('booking test', function (){
   const browser = new Browser();
   const Space = mongoose.model("spaces");
 
+  
   before(function (done) {
     this.server = http.createServer(app).listen(3001);
     var newSpace = new Space({
@@ -16,6 +17,30 @@ describe('booking test', function (){
       spaceNumberOfRooms: '4',
       spaceDescription: 'Nice'});
     newSpace.save(done);
+  });
+
+  before(function (done) {
+    browser.visit('/users/new', done);
+  });
+
+  before(function(done) {
+    browser
+      .fill('username', 'Chris')
+      .fill('email', 'chris@hacc.com')
+      .fill('password', 'hello123')
+      .fill('passwordConfirmation', 'hello123')
+      .pressButton('Sign Me Up!', done);
+  });
+
+  before(function (done) {
+    browser.visit('/login', done);
+  });
+
+  before(function(done) {
+    browser
+      .fill('username', 'Chris')
+      .fill('password', 'hello123')
+      .pressButton('Login', done);
   });
 
   before(function (done) {
