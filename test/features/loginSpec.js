@@ -11,25 +11,25 @@ describe('Log in', function() {
     browser.visit('/login', done);
   });
 
-  before(function(done) {
-    var user = new User({
-      username: 'Hugo',
-      email: 'email@email.email',
-      password: 'hello123'
-    });
-    browser
-      .fill('username', 'Hugo')
-      .fill('password', 'hello123')
-      .pressButton('Login');
-    done();
-  });
-
   after(function(done) {
     this.server.close();
     mongoose.connection.db.dropDatabase(done);
   });
 
   describe("User should be able to log in", function() {
+    before(function(done) {
+      var user = new User({
+        username: 'Hugo',
+        email: 'email@email.email',
+        password: 'hello123'
+      });
+      browser
+        .fill('username', 'Hugo')
+        .fill('password', 'hello123')
+        .pressButton('Login');
+      done();
+    });
+
     it('expects to be able to able to log in', function() {
       expect(browser.url).to.equal('http://makers-bnb.com/home');
     });
