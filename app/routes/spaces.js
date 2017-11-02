@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
-const Space = mongoose.model("spaces");
-const Booking = mongoose.model("bookings");
 var express = require('express');
 var router = express.Router();
+var sessionTools = require('../bin/sessionTools');
 
-router.get('/new', (req, res) => {
+const mongoose = require('mongoose');
+const Space = mongoose.model("spaces");
+
+router.get('/new', sessionTools.requireLogin, (req, res) => {
   res.render('spaces/new');
 });
 
@@ -18,9 +19,10 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   var newSpace = new Space(req.body);
+  newSpace.owner = req.user.id
   newSpace.save()
     .then(item => {
-      res.redirect('/spaces');
+      res.redirect('/users/' + req.user.username + '/spaces');
     })
     .catch(err => {
       res.send('spaces/new');
