@@ -1,32 +1,30 @@
-var passport = require('passport');
-var bcrypt = require('bcrypt');
-var LocalStrategy = require('passport-local').Strategy;
-
+var passport = require('passport'),
+  bcrypt = require('bcrypt'),
+  LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({
-      username: username
-    }, function(err, user) {
-      if (err) {
-        return done(err);
-      }
-
-      // User not found
-      if (!user) {
-        return done(null, false);
-      }
-
-      // Always use hashed passwords and fixed time comparison
-      bcrypt.compare(password, user.password, function(err, isValid) {
-        if (err) {
-          return done(err);
+        'username': username
+      },
+      function(err, user) {
+        if (err) return done(err);
+        if (!user) {
+          console.log('User Not Found with username ' + username);
+          return done(null, false,
+            req.flash('message', 'User Not found.'));
         }
-        if (!isValid) {
-          return done(null, false);
-        }
-        return done(null, user);
-      });
-    });
-  }
-));
+        bcrypt.compare(password, user.password, function(err, isValid) {
+          if (err) {
+            return done(err);
+          }
+          if (!isValid) {
+            return done(null, false, {
+              message: 'Username and password do not match'
+            });
+          }
+          return done(null, user);
+        });
+      }
+    );
+  }));
