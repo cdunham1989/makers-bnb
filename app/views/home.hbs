@@ -8,7 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 <body>
-  <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -24,6 +24,9 @@
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -70,22 +73,21 @@
   <h3>Start planning your break<br></h3>
   <div class="row">
     <div class="col-sm-4">
-      <img src="http://i.telegraph.co.uk/multimedia/archive/02698/Venice_2698135b.jpg" class="img-responsive" style="width:100%" alt="Image">
-      <p>Is this your next holiday?</p>
-    </div>
-    <div class="col-sm-4">
       <div class="well">
        <h1>Sign Up to MakersBnB</h1>
+       <form class="signUpSignIn" action='/users/new' method='get'>
+         <input type="submit" value="Create a new Account">
+       </form>
       </div>
     </div>
     <div class="col-sm-4">
+      <img id="homePageVenice" src="http://i.telegraph.co.uk/multimedia/archive/02698/Venice_2698135b.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <div class="centered"><h2>Is this your next holiday?</h2></div>
+    </div>
+    <div class="col-sm-4">
       <div class="well">
-        <form action='/users/new' method='get'>
-          <input type="submit" value="Create a new Account">
-        </form>
-      </div>
-      <div class="well">
-        <form action='/login' method='get'>
+        <h1>Log In to MakersBnB</h1>
+        <form class="signUpSignIn" action='/login' method='get'>
           <input type="submit" value="Sign In">
         </form>
       </div>
