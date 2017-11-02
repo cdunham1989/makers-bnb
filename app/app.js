@@ -10,10 +10,12 @@ var app = express();
 
 const space = require('./models/space');
 const user = require('./models/user');
+const booking = require('./models/booking');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var spaces = require('./routes/spaces');
+// var book = require('./routes/book');
 
 var env = app.get('env');
 

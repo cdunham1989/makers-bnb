@@ -24,7 +24,7 @@ describe('Spaces', function (){
     before(function (done) {
       browser.visit('/spaces', done);
     });
-    
+
     it('allows a user to view all spaces', function () {
       expect(browser.html('body')).to.contain("Bob sykes");
     });
