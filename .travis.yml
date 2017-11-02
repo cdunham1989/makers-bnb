@@ -1,13 +1,15 @@
 language: node_js
-
 node_js:
-  # - "iojs"
-  - "8"
-  
+- '8'
 branches:
   only:
-    - master
-
+  - master
 services: mongodb
-
 after_success: npm run coverage
+deploy:
+  provider: heroku
+  api_key:
+    secure: oQDBU3mNGlACTwvtF9WtRUIcJKP+Spt/5uRouAp4GaF7ARTkw8Z9zeKkxHv7Ua5j7ZJ1yffqPZAiBCw/IINwBZp4UXYV9k4vx9+Q2tuOIknFetS6VU59m+D7HPJRFt4/1Xz4Q0ovkqU0rbPAqM0um3Q90pmmING1W9VVOa4rXs7YNkCiWBVjB1EZJ78Czpx3ErUO24GKG4ZT+b+/UiesQQ1+wSwghgb77TUyuDJF/dc3rLRy/OdDIu/TJZIFr071S2lphpP5NwoYYV8LRf0aa5rUnoPw8RV1mr10T5nVn22R/lREDfV69ol7BTZFgVYVdGWaVbnDV2UJPd7VcN67co3Rs9NpsSl6NGKPa1Yi5l1mfckXE1bTZhR7PJGOdQZPEVCHCCg79VUnEFg1BL45yFgvLVutFv1K4oSE0vZOy5bpqyrc48WEWIuQ84NI0beYH2TG9kJkcPBTD8umzQaV8ilFCBPHrCqtRX+oqeXVMDudgvNBW1VE5IQKWreqGopJVsPHXIyzpR9cSpgJKMdsmDXqevNVOBd29TfICLK9yyFoZ7rSaxjt1PvfRsYZ1jvUksAiOugADWNK+VWileE4r77oI9HFbCICNmTwV9xglVoFCRlagy6qPGjUslO1pRes2IyQT0xkp0zM1OWHNREymhWWp+z7q7NnjoDeqTGRKRs=
+  app: hacc-makers-bnb
+  on:
+    repo: cdunham1989/makers-bnb
