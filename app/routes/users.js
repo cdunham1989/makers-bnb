@@ -12,25 +12,22 @@ router.get('/new', function(req, res) {
 
 router.post('/', function(req, res) {
   var newUser = new User(req.body);
-  newUser.save().then(function(item) {
-      res.redirect('/users/confirmation');
+  newUser.save().then(function (item) {
+    req.session.user = newUser
+    res.redirect('/users/' + newUser.username + '/spaces');
     })
     .catch(function(err) {
       res.redirect('users/new');
     });
 });
 
-router.get('/confirmation', function(req, res) {
-  User.findOne().sort({
-    $natural: -1
-  }).exec(function(e, r) {
-    res.render('confirmation', {
-      username: r.username
-    });
+router.delete('/', function (req, res) {
+  req.session.destroy(function (err) {
+    res.redirect('/');
   });
 });
 
-router.get('/:username/spaces', function (req, res) {
+router.get('/:username/spaces', sessionTools.requireLogin, function (req, res) {
   Space
     .find({ owner: req.user.id })
     .exec(function (err, spaces) {

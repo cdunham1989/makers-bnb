@@ -4,7 +4,8 @@ var express = require('express'),
   bcrypt = require('bcryptjs'),
   User = mongoose.model('users');
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
+  console.log(req.user);
   res.render('home');
 });
 
@@ -17,7 +18,7 @@ router.post('/home', function (req, res) {
     user.comparePassword(req.body.password, function (err, isMatch) {
       if (isMatch === true) {
         req.session.user = user;
-        res.redirect('/');        
+        res.redirect('/users/' + user.username + '/spaces');        
       } else {
         res.redirect('/login');
       }
