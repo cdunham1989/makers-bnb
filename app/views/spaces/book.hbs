@@ -1,13 +1,5 @@
-<h1>{{title}}</h1>
-{{!-- <p>Welcome to {{space}}</p> --}}
-<section>
-    <p>{{space.spaceName}}</p>
-  <article>
-    <p>{{ space.spaceName }}</p>
-    <p>{{ space.spaceLocation }}</p>
-    <p>{{ space.spacePricePerNight }}</p>
-    <p>{{ space.spaceNumberOfRooms }}</p>
-    <p>{{ space.spaceDescription }}</p>
-    <p>{{ space.spacePetFriendly }}</p>
-  </article>
-</section>
+{{{spaces}}}
+<p>You have requested to book {{space.spaceName}}</p>
+<form action="/spaces/book" method="post">
+  <button type="submit" name="spaceId" value="{{space.id}}">Confirm</button>
+</form>

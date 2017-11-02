@@ -1,3 +1,3 @@
-node_modules/
+.eslint*
 .nyc_output/
-.eslintrc.json
+node_modules/

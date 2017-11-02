@@ -22,15 +22,18 @@ describe('booking test', function (){
     browser.visit('/spaces', done);
   });
 
+  before(function (done) {
+    browser.pressButton('Book Me', done);
+  });
 
-  describe('booking a space', function () {
+  before(function (done) {
+    browser.pressButton('Confirm', done);
+  });
 
-    before(function (done) {
-      browser.pressButton('Book Me', done)
-    });
+  describe('viewing a space booking', function () {
 
-    it('allows a user to book a space', function () {
-      expect(browser.html('body')).to.contain("Bob sykes");
+    it('requests a booking', function () {
+      expect(browser.html('body')).to.contain('You have requested to book Bob sykes');
     });
 
   });
