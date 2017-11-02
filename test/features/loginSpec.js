@@ -1,13 +1,5 @@
 'use strict';
 
-var Browser = require('zombie');
-var expect = require('chai').expect;
-var app = require('../../app/app');
-var mongoose = require('mongoose');
-var http = require('http');
-var User = require('../../app/models/user');
-
-
 Browser.localhost('makers-bnb.com', 3001);
 
 describe('Log in', function() {
@@ -16,7 +8,7 @@ describe('Log in', function() {
 
   before(function(done) {
     this.server = http.createServer(app).listen(3001);
-    browser.visit('/', done);
+    browser.visit('/login', done);
   });
 
   before(function(done) {
@@ -28,13 +20,18 @@ describe('Log in', function() {
     browser
       .fill('username', 'Hugo')
       .fill('password', 'hello123')
-      .pressButton('Sign In!', done);
+      .pressButton('Login');
+    done();
+  });
+
+  after(function(done) {
+    this.server.close();
+    mongoose.connection.db.dropDatabase(done);
   });
 
   describe("User should be able to log in", function() {
     it('expects to be able to able to log in', function() {
-      expect(brower.html('body')).to.contain('Welcome, Hugo!');
+      expect(browser.url).to.equal('http://makers-bnb.com/home');
     });
   });
-
 });

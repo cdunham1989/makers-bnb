@@ -15,9 +15,19 @@ const booking = require('./models/booking');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var spaces = require('./routes/spaces');
-// var book = require('./routes/book');
+
+var passport = require('passport');
+var session = require('express-session');
 
 var env = app.get('env');
+
+app.use(session({
+  secret: 'mySecretKey',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // view engine setup

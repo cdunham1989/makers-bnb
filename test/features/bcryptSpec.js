@@ -1,5 +1,4 @@
 'use strict';
-var User = mongoose.model('users');
 
 Browser.localhost('makers-bnb.com', 3001);
 

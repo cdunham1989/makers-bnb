@@ -11,6 +11,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/home', function(req, res) {
+  console.log(req.body.username);
 
 });
 

@@ -1,18 +1,18 @@
 'use strict';
 
-Browser.localhost('example.com', 3001);
+Browser.localhost('makers-bnb.com', 3001);
 
 describe('User visits signup page', function() {
 
   const browser = new Browser();
 
   before(function(done) {
-    this.server = http.createServer(app).listen(3001);    
+    this.server = http.createServer(app).listen(3001);
     browser.visit('/users/new', done);
   });
 
-  describe('Signing up form', function () {
-    
+  describe('Signing up form', function() {
+
     before(function(done) {
       browser
         .fill('username', 'Chris')
@@ -27,9 +27,9 @@ describe('User visits signup page', function() {
     });
   });
 
-  after(function (done) {
+  after(function(done) {
     this.server.close();
-    mongoose.connection.db.dropDatabase(done);    
+    mongoose.connection.db.dropDatabase(done);
   });
 
 });
