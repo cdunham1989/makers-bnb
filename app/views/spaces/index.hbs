@@ -1,14 +1,13 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<section>
-  {{#each spaces}}
-  <article>
-    <p>{{ this.spaceName }}</p>
-    <p>{{ this.spaceLocation }}</p>
-    <p>{{ this.spacePricePerNight }}</p>
-    <p>{{ this.spaceNumberOfRooms }}</p>
-    <p>{{ this.spaceDescription }}</p>
-    <p>{{ this.spacePetFriendly }}</p>
-  </article>
-  {{/each}}
-</section>
+{{#each spaces}}
+<article>
+  <p>{{ this.spaceName }}</p>
+  <p>{{ this.spaceLocation }}</p>
+  <p>{{ this.spacePricePerNight }}</p>
+  <p>{{ this.spaceNumberOfRooms }}</p>
+  <p>{{ this.spaceDescription }}</p>
+  <p>{{ this.spacePetFriendly }}</p>
+  <form action="/spaces/book">
+    <button type="submit" name="spaceId" value="{{this.id}}">Book Me</button>
+  </form>
+</article>
+{{/each}}

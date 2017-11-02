@@ -1,8 +1,20 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: linear-gradient(#B4A0E5, #F0C9FF)
+}
+h1 {
+  font-family: 'Helvetica';
+  font-size: 5em;
+  font-weight: bold;
+  color: #1E1014;
+  text-align: center;
+  text-shadow: 0 0 5px #CAFFD0, 0 0 8px #C9E4E7
 }
 
-a {
-  color: #00B7FF;
+form {
+  font-family: 'Helvetica';
+  font-size: 3em;
+  font-weight: bold;
+  color: #1E1014;
+  text-align: center;
+  text-shadow: 0 0 5px #CAFFD0, 0 0 8px #C9E4E7
 }
