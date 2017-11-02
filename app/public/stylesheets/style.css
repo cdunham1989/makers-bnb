@@ -9,44 +9,61 @@
     padding: 25px;
   }
 
-.carousel-inner img {
+  .carousel-inner img {
     width: 100%;
     margin: auto;
     min-height:200px;
     max-height: 600px;
-}
+  }
 
-@media (max-width: 600px) {
+  .signUpSignIn{
+    padding: 25px;
+  }
+
+  #homePageVenice{
+     opacity: 0.3;
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
+
+  @media (max-width: 600px) {
   .carousel-caption {
     display: none;
+    }
   }
-}
 
 /* css for Sign Up page */
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 450px}
+  .row.content {height: 450px}
 
 /* Set gray background color and 100% height */
-.sidenav {
-  padding-top: 20px;
-  background-color: #f1f1f1;
-  height: 100%;
-}
+  .sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+  }
 
 /* Set black background color, white text and some padding */
-#footerSignUp {
-  background-color: #555;
-  color: white;
-  padding: 15px;
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-  .sidenav {
-    height: auto;
+  #footerSignUp {
+    background-color: #555;
+    color: white;
     padding: 15px;
   }
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+  }
+
   .row.content {height:auto;}
-}
+  }
 </style>
