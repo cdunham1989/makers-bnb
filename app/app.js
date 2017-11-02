@@ -15,6 +15,7 @@ const booking = require('./models/booking');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var spaces = require('./routes/spaces');
+var bookings = require('./routes/bookings');
 
 var passport = require('passport');
 var session = require('express-session');
@@ -28,7 +29,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/spaces', spaces);
+app.use('/bookings', bookings);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
