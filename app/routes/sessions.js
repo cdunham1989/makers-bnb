@@ -1,8 +1,9 @@
-var express = require('express'),
-mongoose = require('mongoose'),
-router = express.Router(),
-// bcrypt = require('bcryptjs'),
-User = mongoose.model('users');
+'use strict';
+
+const express = require('express'),
+      mongoose = require('mongoose'),
+      router = express.Router(),
+      User = mongoose.model('users');
 
 router.get('/new', function (req, res) {
   res.render('sessions/new');

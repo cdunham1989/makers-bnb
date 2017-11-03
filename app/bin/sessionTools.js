@@ -1,7 +1,8 @@
-// var session = require('express-session');
-var cookieParser = require('cookie-parser');
-var mongoose = require('mongoose');
-var User = mongoose.model('users');
+'use strict';
+
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
 
 module.exports = {
 

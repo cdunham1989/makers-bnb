@@ -1,4 +1,6 @@
-var express = require('express'),
+'use strict';
+
+const express = require('express'),
   router = express.Router();
 
 router.get('/', function (req, res) {

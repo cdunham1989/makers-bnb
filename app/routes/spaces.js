@@ -1,6 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var sessionTools = require('../bin/sessionTools');
+'use strict';
+
+const express = require('express');
+const router = express.Router();
+const sessionTools = require('../bin/sessionTools');
 
 const mongoose = require('mongoose');
 const Space = mongoose.model("spaces");
