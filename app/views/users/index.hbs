@@ -22,7 +22,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="/">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
@@ -49,10 +49,14 @@
     </div>
     <div class="col-sm-8 text-left">
       <h1>Welcome, {{user.username}}!</h1>
-
-      <h2>{{ user }}</h2>
       <h2>{{ spaces }}</h2>
       <h2>{{ bookings }}</h2>
+        <div class="well">
+          <a href="../spaces/index">View Listed Spaces</a>
+        </div>
+        <div class="well">
+          <a href="../spaces/new"> List A New Space</a>
+        </div>
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
