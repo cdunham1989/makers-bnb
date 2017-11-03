@@ -58,6 +58,7 @@ app.use('/bookings', bookings);
 app.use('/sessions', sessions);
 
 var databaseURI = 'mongodb://localhost/makers-bnb-' + env;
+// mongodb://heroku_k2frgcjb:lim8te267cf7v77ft2f5lmepdq@ds245755.mlab.com:45755/heroku_k2frgcjb
 mongoose.Promise = global.Promise;
 mongoose
   .connect(databaseURI, {
