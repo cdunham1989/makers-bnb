@@ -14,11 +14,9 @@ var bookingSchema = new Schema({
   },
   bookingStartDate: {
     type: Date,
-    default: Date.now
   },
   bookingEndDate: {
     type: Date,
-    default: Date.now
   },
   bookingConfirmed: {
     type: Boolean,

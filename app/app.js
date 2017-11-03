@@ -57,7 +57,7 @@ app.use('/spaces', spaces);
 app.use('/bookings', bookings);
 app.use('/sessions', sessions);
 
-var databaseURI = 'mongodb://localhost/makers-bnb-' + env;
+var databaseURI = process.env.MONGODB_URI || 'mongodb://localhost/makers-bnb-' + env;
 mongoose.Promise = global.Promise;
 mongoose
   .connect(databaseURI, {
