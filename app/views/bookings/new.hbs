@@ -1,5 +1,24 @@
-{{{spaces}}}
-<p>You have requested to book {{space.spaceName}}</p>
-<form action="/bookings" method="post">
-  <button type="submit" name="spaceId" value="{{space.id}}">Confirm</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+</head>
+<body>
+
+    <p>You have requested to book {{space.spaceName}}</p>
+  <form action="/bookings" method="/post"></form>
+  <input type="text" class="daterange"/>
+  <input type="hidden" name="start-date">
+
+  <script type="text/javascript">
+    $('.daterange').daterangepicker();
+  </script>
+
+  </body>
+</html>
