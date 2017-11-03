@@ -66,4 +66,9 @@
 
   .row.content {height:auto;}
   }
+
+  .log-out-button{
+    border-color: inherit;
+    color: inherit;
+  }
 </style>
