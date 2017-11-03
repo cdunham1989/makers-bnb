@@ -11,13 +11,13 @@ module.exports = {
       res.redirect('/sessions/new');
     } else {
       next();
-    };
+    }
   },
 
   setSession: function(req, res, next) {
     if (req.session && req.session.user) {
       User.findOne({
-        email: req.session.user.email
+        username: req.session.user.username
       }, function(err, user) {
         if (user) {
           req.user = user;
