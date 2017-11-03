@@ -24,9 +24,8 @@ var bookingSchema = new Schema({
     type: Boolean,
     default: false
   }
-  },
-  {
-    timestamps: true
-  });
+}, {
+  timestamps: true
+});
 
 mongoose.model('bookings', bookingSchema);
