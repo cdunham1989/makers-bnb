@@ -14,35 +14,39 @@ router.get('/new', function(req, res) {
 
 router.post('/', function(req, res) {
   var newUser = new User(req.body);
-  newUser.save().then(function (item) {
-    req.session.user = newUser
-    res.redirect('/users/' + newUser.username);
+  newUser.save().then(function(item) {
+      req.session.user = newUser;
+      res.redirect('/users/' + newUser.username);
     })
     .catch(function(err) {
       res.redirect('/users/new');
     });
 });
 
-router.delete('/', function (req, res) {
-  req.session.destroy(function (err) {
+router.delete('/', function(req, res) {
+  req.session.destroy(function(err) {
     res.redirect('/');
   });
 });
 
-router.get('/:username', sessionTools.requireLogin, function (req, res) {
+router.get('/:username', sessionTools.requireLogin, function(req, res) {
   Space
-    .find({ owner: req.user.id })
-    .exec(function (err, spaces) {
+    .find({
+      owner: req.user.id
+    })
+    .exec(function(err, spaces) {
       Booking
-        .find({ bookingUser: req.user.id })
+        .find({
+          bookingUser: req.user.id
+        })
         .populate('bookingSpace')
-        .exec(function (err, bookings) {
+        .exec(function(err, bookings) {
           res.render('users/index', {
-            user: req.user,
+            user: req.session.user,
             spaces: spaces,
             bookings: bookings
           });
-        })
+        });
     });
 });
 

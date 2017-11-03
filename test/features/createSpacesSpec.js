@@ -2,7 +2,7 @@
 
 Browser.localhost('makers-bnb.com', 3001);
 
-describe('Spaces', function() {
+describe('Creating spaces', function() {
 
   const browser = new Browser();
 
@@ -20,7 +20,7 @@ describe('Spaces', function() {
       .pressButton('Sign Me Up!', done);
   });
 
-  before(function (done) {
+  before(function(done) {
     browser.visit('/sessions/new', done);
   });
 
@@ -50,6 +50,29 @@ describe('Spaces', function() {
 
     it('allows a user to create a space', function() {
       expect(browser.html('body')).to.contain("Bob sykes");
+    });
+
+  });
+
+  describe('creating a space with no name', function() {
+
+    before(function(done) {
+      browser.visit('/spaces/new', done);
+    });
+
+    before(function(done) {
+      browser
+        .fill('spaceName', '')
+        .fill('spaceLocation', "London")
+        .fill('spacePricePerNight', "300")
+        .fill('spaceNumberOfRooms', "4")
+        .fill('spaceDescription', "Nice")
+        .choose('no')
+        .pressButton('List Space', done)
+    });
+
+    it("shouldn't allows a user to create a space with no name", function() {
+      expect(browser.url).to.equal("http://makers-bnb.com/spaces/new");
     });
 
   });

@@ -14,8 +14,10 @@ router.get('/new', sessionTools.requireLogin, (req, res) => {
 router.get("/", (req, res) => {
   Space
     .find()
-    .exec(function (err, doc) {
-      res.render('spaces/index', { spaces: doc });
+    .exec(function(err, doc) {
+      res.render('spaces/index', {
+        spaces: doc
+      });
     });
 });
 
@@ -27,7 +29,7 @@ router.post("/", (req, res) => {
       res.redirect('/users/' + req.user.username);
     })
     .catch(err => {
-      res.send('spaces/new');
+      res.redirect('spaces/new');
     });
 });
 

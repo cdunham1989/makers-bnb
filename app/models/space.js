@@ -9,7 +9,10 @@ var spaceSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
-  spaceName: String,
+  spaceName: {
+    type: String,
+    required: true
+  },
   spaceLocation: String,
   spacePricePerNight: String,
   spaceNumberOfRooms: String,
@@ -17,4 +20,4 @@ var spaceSchema = new Schema({
   spacePetFriendlyTrue: Boolean
 });
 
- mongoose.model('spaces', spaceSchema);
+mongoose.model('spaces', spaceSchema);
