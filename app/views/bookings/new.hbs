@@ -1,5 +1,37 @@
-{{{spaces}}}
-<p>You have requested to book {{space.spaceName}}</p>
-<form action="/bookings" method="post">
-  <button type="submit" name="spaceId" value="{{space.id}}">Confirm</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+</head>
+<body>
+  <p>You have requested to book {{space.spaceName}}</p>
+  <form action="/bookings" method="post">
+    <input type="text" class="daterange"/>
+    <input type="hidden" name="startDate">
+    <input type="hidden" name="endDate">
+    <button type="submit" name="spaceId" value="{{space.id}}">Confirm</button>
+  </form>
+  <script type="text/javascript">
+    $('input[name="startDate"]').val(moment());
+    $('input[name="endDate"]').val(moment().add(1, 'days'));
+    $('.daterange').daterangepicker({
+      startDate: moment(),
+      endDate: moment().add(1, 'days'),
+      locale: {
+        "format": "DD/MM/YYYY"
+      },
+      autoApply: true
+    });
+    $('.daterange').on('apply.daterangepicker', function(ev, picker) {
+      $('input[name="startDate"]').val(picker.startDate._d);
+      $('input[name="endDate"]').val(picker.endDate._d);
+    });
+  </script>
+  </body>
+</html>
