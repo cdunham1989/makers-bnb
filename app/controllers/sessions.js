@@ -26,6 +26,12 @@ module.exports = {
 
   newSession: function (req, res) {
     res.render('sessions/new');
+  },
+  
+  endSession: function (req, res) {
+    req.session.destroy(function (err) {
+      res.redirect('/');
+    });
   }
 
 };

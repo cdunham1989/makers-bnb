@@ -41,12 +41,6 @@ module.exports = {
             });
           });
       });
-  },
-  
-  endSession: function (req, res) {
-    req.session.destroy(function (err) {
-      res.redirect('/');
-    });
   }
   
 }
