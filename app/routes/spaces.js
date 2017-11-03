@@ -33,4 +33,8 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get('/index', function(req, res) {
+  res.render('spaces/index');
+});
+
 module.exports = router;

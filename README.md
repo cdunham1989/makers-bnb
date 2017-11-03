@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/cdunham1989/makers-bnb.svg?branch=master)](https://travis-ci.org/cdunham1989/makers-bnb)
-[![Coverage Status](https://coveralls.io/repos/github/cdunham1989/makers-bnb/badge.svg)](https://coveralls.io/github/cdunham1989/makers-bnb)
+[![Coverage Status](https://coveralls.io/repos/github/cdunham1989/makers-bnb/badge.svg?branch=master)](https://coveralls.io/github/cdunham1989/makers-bnb?branch=master)
 
 # MakersBnB
 
