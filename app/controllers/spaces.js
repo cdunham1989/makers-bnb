@@ -5,10 +5,6 @@ const Space = mongoose.model("spaces");
 
 module.exports = {
 
-  // getAllSpaces: function (req, res) {
-  //   res.render('spaces/index');
-  // },
-
   newSpace: function (req, res) {
     res.render('spaces/new');
   },

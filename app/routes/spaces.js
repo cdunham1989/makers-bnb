@@ -8,6 +8,5 @@ const spaceController = require('../controllers/spaces');
 router.get('/new', sessionTools.requireLogin, spaceController.newSpace);
 router.get("/", spaceController.getSpaces);
 router.post("/", spaceController.createSpace);
-// router.get('/index', spaceController.getAllSpaces);
 
 module.exports = router;
